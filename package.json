@@ -1,0 +1,25 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "## Introduction This is the backend application for a social media application that handles building friend lists, posting thoughts, and creating reactions to thoughts. Due to its speed with large amounts of data and flexibility with unstructured data, MongoDB was chosen as the database program for this application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelseybrianne/social-network-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kelseybrianne/social-network-api/issues"
+  },
+  "homepage": "https://github.com/kelseybrianne/social-network-api#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
