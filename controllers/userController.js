@@ -22,4 +22,17 @@ module.exports = {
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.status(500).json(err));
   },
+  // update user by its id
+  updateUser(req, res) {
+      User.where({ _id: req.params.userId })
+        .update(req.body)
+        .then((updatedUserData) => res.json(updatedUserData))
+        .catch((err) => res.status(500).json(err));
+  },
+  // remove user by its id
+  deleteUser(req, res) {
+      User.deleteOne({_id: req.params.userId})
+        .then((deletedUserData) => res.json(deletedUserData))
+        .catch((err) => res.status(500).json(err));
+  }
 };

@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/kelseybrianne/social-network-api#readme",
   "dependencies": {
-    "nodemon": "^2.0.15"
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
+    "mongoose": "^6.0.13"
   }
 }
