@@ -18,7 +18,7 @@ const thoughtSchema = new Schema(
             type: String,
             required: true
         },
-        // Array of nested documnets created with the reactionSchema
+        // Array of nested documents created with the reactionSchema
         reactions: [Reaction]
     },
     {
