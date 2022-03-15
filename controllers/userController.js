@@ -6,9 +6,13 @@ module.exports = {
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
+  // GET a single user by its _id and populated thought and friend data
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
       .select("-__v")
+      // Populates the thoughts property so it is not just an array of ObjectIDs. Now it contains all of the information for each thought as well. (Thoughts have been added in thoughtController.js line 23 in the createThought method)
+      .populate("friends")
+      .populate("thoughts")
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user with that ID" })
