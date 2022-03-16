@@ -29,15 +29,22 @@ module.exports = {
   },
   // update user by its id
   updateUser(req, res) {
-      User.where({ _id: req.params.userId })
-        .update(req.body)
-        .then((updatedUserData) => res.json(updatedUserData))
-        .catch((err) => res.status(500).json(err));
+    User.where({ _id: req.params.userId })
+      .update(req.body)
+      .then((updatedUserData) => res.json(updatedUserData))
+      .catch((err) => res.status(500).json(err));
   },
   // remove user by its id
+  // remove all associated thoughts when user is deleted not working
   deleteUser(req, res) {
-      User.deleteOne({_id: req.params.userId})
-        .then((deletedUserData) => res.json(deletedUserData))
-        .catch((err) => res.status(500).json(err));
-  }
+    User.deleteOne({ _id: req.params.userId })
+      .then((user) => res.json(user))
+      .then((user) => {
+        console.log(user.thoughts);
+        !user
+          ? res.status(404).json({ message: "No user with that ID" })
+          : Thought.deleteMany({ _id: { $in: user.thoughts } });
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 };

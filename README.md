@@ -1,7 +1,7 @@
 # Social Network API 👩‍💻
 
 ## Introduction
-This is the backend application for a social media application that handles building friend lists, posting thoughts, and creating reactions to thoughts. Due to its speed with large amounts of data and flexibility with unstructured data, MongoDB was chosen as the database program for this application.
+This is the backend configuration for a social media application that handles building friend lists, posting thoughts, and creating reactions to thoughts. Due to its speed with large amounts of data and flexibility with unstructured data, MongoDB was chosen as the database program for this application.
 
 ## User Story
 
@@ -26,3 +26,5 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ```
 
 ## Demo
+
+Watch a short demonstration [video](https://watch.screencastify.com/v/1JZ5JpIFhqvqKFi3Cn4F) of the application's functionality.
