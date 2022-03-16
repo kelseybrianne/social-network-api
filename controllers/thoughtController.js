@@ -5,7 +5,10 @@ module.exports = {
   getThoughts(req, res) {
     Thought.find()
       .then((users) => res.json(users))
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        console.log(err)
+        res.status(500).json(err)});
+      
   },
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.id })

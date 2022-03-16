@@ -1,40 +1,43 @@
-const { Schema, model } = require('mongoose');
-const Reaction = require('./Reaction');
+const { Schema, model } = require("mongoose");
+const Reaction = require("./Reaction");
+const formatDate = require("../utils/formatDate")
 
 const thoughtSchema = new Schema(
-    {
-        thoughtText: {
-            type: String,
-            required: true,
-            minlength: 1,
-            maxlength: 280
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            // Use getter method to format the timestamp on query
-        },
-        username: {
-            type: String,
-            required: true
-        },
-        // Array of nested documents created with the reactionSchema
-        reactions: [Reaction]
+  {
+    thoughtText: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 280,
     },
-    {
-        // Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query
-        toJSON: {
-            virtuals: true
-        }
-    }
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      // Use getter method to format the timestamp on query. It doesn't say to create a virtual for this? 
+      get: timestamp => formatDate(timestamp)
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    // Array of nested documents created with the reactionSchema
+    reactions: [Reaction],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      getters: true
+    },
+  }
 );
 
+// Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query
 thoughtSchema
-  .virtual('reactionCount')
+  .virtual("reactionCount")
   .get(function () {
-      return this.reactions.length;
+    return this.reactions.length;
   })
 
-const Thought = model('thought', thoughtSchema);
+const Thought = model("thought", thoughtSchema);
 
 module.exports = Thought;

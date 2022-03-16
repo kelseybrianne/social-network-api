@@ -9,10 +9,8 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      // unique
       unique: true,
       required: true,
-      // trimmed
       trim: true,
     },
     email: {
@@ -41,14 +39,14 @@ const userSchema = new Schema(
     ],
   },
   {
-    // Create a virtual called friendCount that retrieves the length of the user's friends array field on query
     toJSON: {
       virtuals: true,
     },
     id: false,
   }
-);
-
+  );
+  
+  // Create a virtual called friendCount that retrieves the length of the user's friends array field on query
 userSchema.virtual("friendCount").get(function () {
   return this.friends.length;
 });
