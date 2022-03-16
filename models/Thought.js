@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const Reaction = require("./Reaction");
-const formatDate = require("../utils/formatDate")
+const formatDate = require("../utils/formatDate");
 
 const thoughtSchema = new Schema(
   {
@@ -13,7 +13,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      // Use getter method to format the timestamp on query. It doesn't say to create a virtual for this? 
+      // Use getter method to format the timestamp on query
       get: timestamp => formatDate(timestamp)
     },
     username: {
